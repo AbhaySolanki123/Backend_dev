@@ -1,0 +1,104 @@
+Basic Unix Commands
+Navigation Commands
+pwd # Print working directory
+ls # List directory contents
+ls -l # Long format listing
+ls -a # Show hidden files
+ls -lh # Human-readable file sizes
+cd /path/to/directory # Change directory
+cd .. # Move up one directory
+cd ~ # Go to home directory
+cd - # Go to previous directory
+
+File and Directory Operations
+
+mkdir dirname # Create directory
+mkdir -p dir1/dir2/dir3 # Create nested directories
+rmdir dirname # Remove empty directory
+touch filename # Create empty file or update timestamp
+cp source dest # Copy file
+cp -r source dest # Copy directory recursively
+mv source dest # Move or rename file
+rm filename # Remove file
+rm -r dirname # Remove directory and contents
+rm -rf dirname # Force remove (use carefully!)
+
+File Content Commands
+cat filename # Display file contents
+less filename # View file with pagination
+head filename # Show first 10 lines
+head -n 20 filename # Show first 20 lines
+tail filename # Show last 10 lines
+tail -f filename # Follow file in real-time (logs)
+wc filename # Count lines, words, characters
+wc -l filename # Count lines only
+
+File Permissions
+ls -l # View permissions
+chmod 755 filename # Change permissions (rwxr-xr-x)
+chmod +x filename # Add execute permission
+chmod -w filename # Remove write permission
+chown user:group file # Change ownership
+
+
+Creating and Initializing Repositories
+# Initialize new repository
+git init
+# Clone existing repository
+git clone https://github.com/username/repository.git
+git clone https://github.com/username/repository.git new-folder-name
+# Check repository status
+git status
+
+ Basic Git Workflow
+# 1. Check current status
+
+git status
+# 2. Add files to staging area
+git add filename # Add specific file
+git add . # Add all files
+git add *.js # Add all JS files
+git add folder/ # Add entire folder
+# 3. Commit changes
+git commit -m "Descriptive message"
+git commit -am "Message" # Add and commit modified files
+# 4. View commit history
+git log
+git log --oneline # Compact view
+git log --graph --oneline # Visual branch view
+git log -n 5 # Last 5 commits
+
+Remote Repository Basics
+# View remote repositories
+git remote -v
+# Add remote repository
+git remote add origin https://github.com/username/repo.git
+# Change remote URL
+git remote set-url origin new-url
+# Remove remote
+git remote remove origin
+
+ Pushing and Pulling
+# Push to remote
+git push origin main
+git push origin feature-branch
+# Push and set upstream
+git push -u origin main
+# Force push (dangerous!)
+git push --force origin main
+# Pull from remote (fetch + merge)
+git pull origin main
+# Fetch without merging
+git fetch origin
+# Pull with rebase
+git pull --rebase origin main
+
+ Tracking Remote Branches
+# List remote branches
+
+git branch -r
+# Create local branch from remote
+git checkout -b local-branch origin/remote-branch
+git checkout --track origin/remote-branch
+# Delete remote branch
+git push origin --delete branch-name
