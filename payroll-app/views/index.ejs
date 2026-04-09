@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="header">
+    <h1>Employee Payroll Dashboard</h1>
+    <a href="/add" class="btn">+ Add Employee</a>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <h3>Total Employees</h3>
+        <p><%= employees.length %></p>
+    </div>
+
+    <div class="card">
+        <h3>Total Salary</h3>
+        <p>
+            <% 
+                let total = 0;
+                employees.forEach(emp => total += emp.salary);
+            %>
+            ₹ <%= total %>
+        </p>
+    </div>
+
+</div>
+
+<div class="table-container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Basic Salary</th>
+            <th>Tax (12%)</th>
+            <th>Net Salary</th>
+            <th>Action</th>
+        </tr>
+
+        <% employees.forEach(emp => { 
+            let tax = emp.salary * 0.12;
+            let net = emp.salary - tax;
+        %>
+        <tr>
+            <td><%= emp.name %></td>
+            <td><%= emp.department %></td>
+            <td>₹ <%= emp.salary %></td>
+            <td>₹ <%= tax.toFixed(2) %></td>
+            <td>₹ <%= net.toFixed(2) %></td>
+            <td>
+                <a href="/edit/<%= emp.id %>" class="edit">Edit</a>
+                <a href="/delete/<%= emp.id %>" class="delete">Delete</a>
+            </td>
+        </tr>
+        <% }) %>
+
+    </table>
+</div>
+
+</body>
+</html>
